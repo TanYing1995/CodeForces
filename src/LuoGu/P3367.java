@@ -1,11 +1,53 @@
+package LuoGu;
+
 import java.io.*;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class Main1 {
+/**
+ * DSU :并查集模板题：https://www.luogu.com.cn/problem/P3367
+ */
+public class P3367{
+    static int[] fa;
     public static void main(String[] args) {
-        Kattio io = new Kattio();
-        //这是一个输入输出模板
-        io.close();
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        fa = new int[n+1];//代表者节点
+        for(int i = 1; i <= n; i++) fa[i] = i;
+        StringBuilder res = new StringBuilder();
+        while(m-- > 0){
+            int z = sc.nextInt();
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            if(z == 1){
+                union(x,y);
+            }
+            else{
+                boolean f = (find(x) == find(y));
+                if(f)
+                    res.append("Y");
+                else
+                    res.append("N");
+                if(m > 0) res.append("\n");
+            }
+        }
+        System.out.println(res.toString());
+    }
+
+    static int find(int x){
+        if(fa[x] != x){
+            fa[x] = find(fa[x]);
+        }
+        return fa[x];
+    }
+
+    static void union(int x, int y){
+        int px = find(x);
+        int py = find(y);
+        if(px != py){
+            fa[px] = py;
+        }
     }
 
     static class Kattio extends PrintWriter {

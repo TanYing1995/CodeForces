@@ -1,16 +1,11 @@
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class P1691D {
+public class InputTemplate {
     public static void main(String[] args) {
-        Kattio sc = new Kattio();
-        int t = sc.nextInt();
-        while(t-- > 0){
-            int n = sc.nextInt();
-            int[] nums = new int[n];
-            for(int i = 0; i < n; i++) nums[i] = sc.nextInt();
-
-        }
+        Kattio io = new Kattio();
+        //这是一个输入输出模板
+        io.close();
     }
 
     static class Kattio extends PrintWriter {
