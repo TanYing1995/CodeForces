@@ -1,13 +1,38 @@
-package
+package CodeForce;
 
 import java.util.*;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class InputTemplate {
+public class P1833B {
     public static void main(String[] args) {
         Kattio io = new Kattio();
         //这是一个输入输出模板
+        int t = io.nextInt();
+        StringBuilder sb = new StringBuilder();
+        while(t-- > 0){
+            int n = io.nextInt();
+            int k = io.nextInt();
+            Integer[] a = new Integer[n];
+            Integer[] b = new Integer[n];
+            Integer[] idx = new Integer[n];
+            for(int i = 0; i < n; i++) {
+                a[i] = io.nextInt();
+                idx[i] = i;
+            }
+            for(int i = 0; i < n; i++) b[i] = io.nextInt();
+            Arrays.sort(b);
+            Arrays.sort(idx,(i,j) -> a[i]-a[j]);
+            int[] c = new int[n];
+            for(int i = 0; i < n; i++){
+                c[idx[i]] = b[i]; 
+            }
+            for(int i = 0; i < n; i++){
+                sb.append(c[i]).append(" ");
+            }
+            sb.append("\n");
+        }
+        System.out.println(sb.toString());
         io.close();
     }
 

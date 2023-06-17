@@ -1,13 +1,27 @@
-package
+package CodeForce;
 
-import java.util.*;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 
-public class InputTemplate {
+public class P1833A {
     public static void main(String[] args) {
         Kattio io = new Kattio();
         //这是一个输入输出模板
+        int t = io.nextInt();
+        StringBuilder res = new StringBuilder();
+        while(t-- > 0){
+            int n = io.nextInt();
+            String s = io.next();
+            Map<String,Integer> map = new HashMap<>();
+            for(int j = 1;j < n; j++){
+                String ss = s.substring(j-1, j+1);
+                map.put(ss,map.getOrDefault(ss, 0)+1);
+            }
+            res.append(map.size()).append("\n");
+        }
+        System.out.println(res.toString());
         io.close();
     }
 

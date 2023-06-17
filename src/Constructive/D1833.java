@@ -1,13 +1,23 @@
-package
+package Constructive;
 
-import java.util.*;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class InputTemplate {
+public class D1833 {
     public static void main(String[] args) {
         Kattio io = new Kattio();
         //这是一个输入输出模板
+        int t = io.nextInt();
+        while(t-- > 0){
+            int n = io.nextInt();
+            int[] nums = new int[n];
+            int mx = -1;
+            for(int i = 0; i < n; i++) {
+                nums[i] = io.nextInt();
+                if(nums[i] == n) mx = i;
+            }
+
+        }
         io.close();
     }
 
