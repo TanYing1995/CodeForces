@@ -1,13 +1,42 @@
-package xxx;
+package Dp;
 
 import java.util.*;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class InputTemplate {
+/*
+ * https://codeforces.com/problemset/problem/602/B
+ * rating : 1400
+ */
+
+
+
+public class B602 {
     public static void main(String[] args) {
         Kattio io = new Kattio();
-        //这是一个输入输出模板
+        int n = io.nextInt();
+        int[] nums = new int[n]; 
+        for(int i = 0; i < n; i++) nums[i] = io.nextInt();
+        int ans = 1;
+        //dp[i][0] 表示以nums[i]作为最小值的最大长度
+        //dp[i][1] 表示以nums[i]作为最大值的最大长度
+        int[][] dp = new int[n][2];
+        dp[0][0] = 1;dp[0][1] = 1;
+        for(int i = 1; i < n; i++){
+            dp[i][0] = 1;dp[i][1] = 1;
+            if(nums[i] == nums[i-1]+1){
+                dp[i][1] = dp[i-1][0]+1;
+            }
+            if(nums[i] == nums[i-1]-1){
+                dp[i][0] = dp[i-1][1]+1;
+            }
+            if(nums[i] == nums[i-1]){
+                dp[i][0] = dp[i-1][0]+1;
+                dp[i][1] = dp[i-1][1]+1;
+            }
+            ans = Math.max(ans,Math.max(dp[i][0],dp[i][1]));
+        }
+        System.out.println(ans);
         io.close();
     }
 
