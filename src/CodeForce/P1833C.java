@@ -12,7 +12,7 @@ public class P1833C {
         StringBuilder sb = new StringBuilder();
         while(t-- > 0){
             int n = io.nextInt();
-            int[] nums = new int[n];
+            Integer[] nums = new Integer[n];
             int mi = 1000000000;
             for(int i = 0; i < n; i++){
                 nums[i] = io.nextInt();
