@@ -4,6 +4,12 @@ import java.util.*;
 import java.io.*;
 import java.util.StringTokenizer;
 
+
+/*
+ * https://codeforces.com/problemset/problem/460/C
+ * 
+ * binarysearch
+ */
 public class C460 {
     static int[] nums;
     static int n,m,w;
@@ -14,8 +20,15 @@ public class C460 {
         m = io.nextInt();
         w = io.nextInt();
         nums = new int[n];
+        int mi = (int)1e9;
         for(int i = 0; i < n; i++){ 
             nums[i] = io.nextInt();
+            mi = Math.min(mi,nums[i]);
+        }
+        if(w == n) {
+            System.out.println(mi+m);
+            io.close();
+            return;
         }
         int l = 1,r = (int)1e9+100001;
         //二分答案
@@ -48,6 +61,7 @@ public class C460 {
                 cnt += (k-v);
             }
         }
+        
         return cnt <= m;
     }
 

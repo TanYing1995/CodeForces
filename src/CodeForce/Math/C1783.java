@@ -1,13 +1,43 @@
-package ;
+
 
 import java.util.*;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class InputTemplate {
+/*
+ * https://codeforces.com/problemset/problem/1738/C
+ */
+
+public class C1783 {
     public static void main(String[] args) {
         Kattio io = new Kattio();
         //这是一个输入输出模板
+        int t = io.nextInt();
+        StringBuilder sb = new StringBuilder();
+        while(t-- > 0){
+            int n = io.nextInt();
+            int[] nums = new int[n];
+            int a = 0, b = 0;
+            for(int i = 0; i < n; i++) {    
+                int v = io.nextInt();
+                if(v%2 == 0) a++;
+                else b++;
+            }
+            String res = "";
+            if(b%4 == 2){
+                res = "Bob";
+            }else if(b%4 == 3){
+                res = "Alice";
+            }else if(b%4 == 0){
+                res = "Alice";
+            }else if(a%2 == 1){
+                res = "Alice";
+            }else{
+                res = "Bob";
+            }
+            sb.append(res).append("\n");
+        }
+        System.out.println(sb.toString());
         io.close();
     }
 
