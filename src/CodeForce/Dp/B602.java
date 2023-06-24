@@ -1,4 +1,4 @@
-package Dp;
+package CodeForce.Dp;
 
 import java.util.*;
 import java.io.*;
