@@ -1,40 +1,34 @@
 package CodeForce.Dp;
 
-import java.util.*;
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-/*
- * https://codeforces.com/problemset/problem/602/B
- * rating : 1400
+/**
+ * https://codeforces.com/contest/1272/problem/D
+ * dp 1500
  */
-
-
-
-public class B602 {
+public class D1272 {
     public static void main(String[] args) {
         Kattio io = new Kattio();
+        // Template
         int n = io.nextInt();
-        int[] nums = new int[n]; 
-        for(int i = 0; i < n; i++) nums[i] = io.nextInt();
+        int[] nums = new int[n];
+        for(int i = 0; i < n; i++){nums[i] = io.nextInt();}
+        //dp[i] 以nums[i]结尾的最长子数组长度
         int ans = 1;
-        //dp[i][0] 表示以nums[i]作为最小值的最大长度
-        //dp[i][1] 表示以nums[i]作为最大值的最大长度
-        int[][] dp = new int[n][2];
-        dp[0][0] = 1;dp[0][1] = 1;
+        int[] l = new int[n];l[0] = 1;
+        //不删除元素时的最大递增子数组长度
+        int[] r = new int[n];r[n-1] = 1;
         for(int i = 1; i < n; i++){
-            dp[i][0] = 1;dp[i][1] = 1;
-            if(nums[i] == nums[i-1]+1){
-                dp[i][1] = dp[i-1][0]+1;
-            }
-            if(nums[i] == nums[i-1]-1){
-                dp[i][0] = dp[i-1][1]+1;
-            }
-            if(nums[i] == nums[i-1]){
-                dp[i][0] = dp[i-1][0]+1;
-                dp[i][1] = dp[i-1][1]+1;
-            }
-            ans = Math.max(ans,Math.max(dp[i][0],dp[i][1]));
+            l[i] = (nums[i] > nums[i-1] ? l[i-1]+1 : 1);
+            ans = Math.max(ans, l[i]);
+            r[n-i-1] = (nums[n-i-1] < nums[n-i] ? r[n-i]+1 : 1);
+        }
+        //删除一个元素,删除的元素从[1,n-2]选择,从首尾删掉元素肯定不会优于不删除元素取得的结果
+        for(int i = 1; i < n-1; i++){
+            if(nums[i-1] < nums[i+1])
+                ans = Math.max(ans,l[i-1]+r[i+1]);
         }
         System.out.println(ans);
         io.close();

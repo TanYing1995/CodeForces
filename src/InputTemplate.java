@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 public class InputTemplate {
     public static void main(String[] args) {
         Kattio io = new Kattio();
-        //这是一个输入输出模板
+        // Template
         io.close();
     }
 

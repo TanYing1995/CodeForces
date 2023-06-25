@@ -1,42 +1,43 @@
-package CodeForce.Dp;
+
 
 import java.util.*;
 import java.io.*;
 import java.util.StringTokenizer;
 
 /*
- * https://codeforces.com/problemset/problem/602/B
- * rating : 1400
+ * https://codeforces.com/problemset/problem/1738/C
  */
 
-
-
-public class B602 {
+public class C1783 {
     public static void main(String[] args) {
         Kattio io = new Kattio();
-        int n = io.nextInt();
-        int[] nums = new int[n]; 
-        for(int i = 0; i < n; i++) nums[i] = io.nextInt();
-        int ans = 1;
-        //dp[i][0] 表示以nums[i]作为最小值的最大长度
-        //dp[i][1] 表示以nums[i]作为最大值的最大长度
-        int[][] dp = new int[n][2];
-        dp[0][0] = 1;dp[0][1] = 1;
-        for(int i = 1; i < n; i++){
-            dp[i][0] = 1;dp[i][1] = 1;
-            if(nums[i] == nums[i-1]+1){
-                dp[i][1] = dp[i-1][0]+1;
+        //这是一个输入输出模板
+        int t = io.nextInt();
+        StringBuilder sb = new StringBuilder();
+        while(t-- > 0){
+            int n = io.nextInt();
+            int[] nums = new int[n];
+            int a = 0, b = 0;
+            for(int i = 0; i < n; i++) {    
+                int v = io.nextInt();
+                if(v%2 == 0) a++;
+                else b++;
             }
-            if(nums[i] == nums[i-1]-1){
-                dp[i][0] = dp[i-1][1]+1;
+            String res = "";
+            if(b%4 == 2){
+                res = "Bob";
+            }else if(b%4 == 3){
+                res = "Alice";
+            }else if(b%4 == 0){
+                res = "Alice";
+            }else if(a%2 == 1){
+                res = "Alice";
+            }else{
+                res = "Bob";
             }
-            if(nums[i] == nums[i-1]){
-                dp[i][0] = dp[i-1][0]+1;
-                dp[i][1] = dp[i-1][1]+1;
-            }
-            ans = Math.max(ans,Math.max(dp[i][0],dp[i][1]));
+            sb.append(res).append("\n");
         }
-        System.out.println(ans);
+        System.out.println(sb.toString());
         io.close();
     }
 
