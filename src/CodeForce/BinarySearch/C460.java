@@ -1,4 +1,4 @@
-package BinarySearch;
+package CodeForce.BinarySearch;
 
 import java.util.*;
 import java.io.*;
