@@ -1,4 +1,4 @@
-package CodeForce.BinarySearch;
+//package BinarySearch;
 
 import java.util.*;
 import java.io.*;
@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
  */
 public class C460 {
     static int[] nums;
-    static int n,m,w,mi;
+    static int n,m,w;
     public static void main(String[] args) {
         Kattio io = new Kattio();
         //这是一个输入输出模板
@@ -20,12 +20,6 @@ public class C460 {
         m = io.nextInt();
         w = io.nextInt();
         nums = new int[n];
-
-        mi = (int)1e9;
-        for(int i = 0; i < n; i++){ 
-            nums[i] = io.nextInt();
-            mi = Math.min(mi,nums[i]);
-        }
         int mi = (int)1e9;
         for(int i = 0; i < n; i++){ 
             nums[i] = io.nextInt();
@@ -36,7 +30,7 @@ public class C460 {
             io.close();
             return;
         }
-        int l = mi,r = (int)1e9+100001;
+        int l = 1,r = (int)1e9+100001;
         //二分答案
         while(l <= r){
             int mid = l+(r-l)/2;
@@ -45,10 +39,9 @@ public class C460 {
             }else{
                 r = mid-1;
             }
-            //System.out.println(l + "  "+ r);
+            System.out.println(l + "  "+ r);
         }
         System.out.println(r);
-        //System.out.println(check(499));
         io.close();
     }
 
@@ -58,20 +51,18 @@ public class C460 {
         diff[0] = nums[0];
         for(int i = 1; i < diff.length; i++){
             diff[i] = nums[i]-nums[i-1];
-            //System.out.print(diff[i] + " ");
         }
-        //System.out.println();
-        long v = 0;
+        int v = 0;
         long cnt = 0;
         for(int i = 0; i < n; i++){
             v += diff[i];
             if(v < k){
-                if(i+w < n) diff[i+w] -= (k-v);
-                cnt = cnt +(k-v);
-                v = k;//增加当前值到k
+                if(i+w-1 < n) diff[i+w-1] -= (k-v);
+                cnt += (k-v);
             }
         }
-         return cnt <= m;
+        
+        return cnt <= m;
     }
 
     static class Kattio extends PrintWriter {

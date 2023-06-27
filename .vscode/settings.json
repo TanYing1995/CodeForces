@@ -1,6 +1,7 @@
 {
     "java.debug.settings.onBuildFailureProceed": true,
     "java.project.sourcePaths": [
-        "src\\CodeForce\\BinarySearch"
+        "CodeForces/src",
+        "src/CodeForce/BinarySearch"
     ]
 }
