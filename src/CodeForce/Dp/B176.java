@@ -1,10 +1,10 @@
-package xxx;
+package CodeForce.Dp;
 
 import java.util.*;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class InputTemplate {
+public class B176 {
     public static void main(String[] args) {
         Kattio io = new Kattio();
         // Template
