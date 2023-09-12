@@ -18,16 +18,19 @@ public class C248 {
         Kattio io = new Kattio();
         int n = io.nextInt();
         int m = io.nextInt();
-        int k = io.nextInt();
+        int kk = io.nextInt();
         long ans = 0L;
         int mod = 998244353;
-        long[][] dp = new long[n+1][k+1];
-        for(int i = 1; i <= k; i++) dp[1][i] = i;
+        long[][] dp = new long[n+1][kk+1];
+        for(int i = 1; i <= m; i++) dp[1][i] = 1;
         for (int i = 2; i <= n; i++) {
-            for (int j = 1; j <= k; j++) {
-
+            for (int j = i; j <= Math.min(i*m,kk); j++) {
+                for (int k = j-1; k >= Math.max(j-m,0); k--){
+                    dp[i][j] = (dp[i-1][k] + dp[i][j] + mod)%mod;
+                }
             }
         }
+        for(int i = 1; i <= kk; i++) ans = (ans + dp[n][i] + mod)%mod;
         System.out.println(ans);
         io.flush();
     }

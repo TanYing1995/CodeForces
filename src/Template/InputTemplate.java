@@ -1,12 +1,8 @@
 package Template;
 
 import java.io.*;
-import java.util.StringTokenizer;
+import java.util.*;
 
-/**
- *
- *  Score:
- */
 
 public class InputTemplate{
     public static void main(String[] args) {
