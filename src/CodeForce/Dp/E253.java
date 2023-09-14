@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 * @return:
 */
 
-public class ABC_253E{
+public class E253{
     public static void main(String[] args) {
         Kattio io = new Kattio();
         int n = io.nextInt();
