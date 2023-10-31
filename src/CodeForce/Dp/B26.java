@@ -2,42 +2,30 @@ package Dp;
 
 import java.io.*;
 import java.util.*;
-/***
-* @Author: tanying
-* @Date: 2023/9/14
-* @Description: https://atcoder.jp/contests/arc137/tasks/arc137_b
-* @Param: 
- * @param null
-* @return: 
-*/
 
-public class B137 {
+
+public class B26{
     public static void main(String[] args) {
         Kattio io = new Kattio();
-        int n = io.nextInt();
-        int[] nums = new int[n];
-        int sum = 0;
-        for(int i = 0; i < n; i++) {
-            nums[i] = io.nextInt();
-            sum += nums[i];
-        }
-        int[][] dp = new int[n][2];
-        dp[0][0] = nums[0] == 0 ? 1 : 0;
-        dp[0][1] = nums[0] == 1 ? 1 : 0;
-        int x = dp[0][0],y = dp[0][1];
-        for(int i = 1; i < n; i++){
-            if(nums[i] == 1){
-                dp[i][1] = dp[i-1][1]+1;
-                //dp[i][0] = (dp[i-1][0] > 0 ? dp[i-1][0]-1 : 0);
-                dp[i][0] = Math.max(dp[i-1][0]-1,0);
+        String str = io.next();
+        int n = str.length();
+        // x : 左侧 "("的数量   y : 左侧 ")"的数量
+        int x = 0, y = 0;
+        int ans = 0;
+        for(int i = 0; i < n; i++){
+            char ch = str.charAt(i);
+            if(ch == '('){
+                x++;
             }else{
-                dp[i][0] = dp[i-1][0]+1;
-                dp[i][1] = Math.max(dp[i-1][1]-1,0);
+                if(x > 0){
+                    x--;
+                    ans+=2;
+                }else{
+                    y++;
+                }
             }
-            x = Math.max(x,dp[i][0]);
-            y = Math.max(y,dp[i][1]);
         }
-        System.out.println(x+y+1);
+        System.out.println(ans);
         io.flush();
     }
 

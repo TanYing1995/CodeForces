@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "B26",
+            "request": "launch",
+            "mainClass": "Dp.B26",
+            "projectName": "CodeForces_7921d57c"
+        },
+        {
+            "type": "java",
+            "name": "B26",
+            "request": "launch",
+            "mainClass": "B26",
+            "projectName": "CodeForces_7921d57c"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
